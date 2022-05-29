@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 10px;
+    font-family: 'Roboto', sans-serif;   
+}
+body{
+    background-color: lightskyblue;
+    color: black;
+}
+h1{
+    color: midnightblue;
+    padding: 20px;
+    font-weight: 900;
+    font-size: 5rem;
+    border-radius: 4px;
+    text-align: center;
+}
+section{
+    min-height: 50vh;
+    width: 100%;
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: dodgerblue;
+    border-radius: 8px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+.container p{
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 3rem;
+    text-align: justify;
+}
+button{
+    margin-top: 4rem;
+    width: fit-content;
+    padding: 2rem;
+    font-size: 2rem;
+    background-color: midnightblue;
+    color: antiquewhite;
+    border: none;
+    border-radius: 44px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+.total{
+    margin-top: 4rem;
+    font-style: italic;
+    color:darkblue;
+}
