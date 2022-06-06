@@ -7,54 +7,44 @@ button.addEventListener('click', getJoke);
 
 let saveJokeButton = document.getElementById('save-joke-button');
 // document.getElementById("save-joke-button").disabled = true;
-saveJokeButton.disabled = true;
+// saveJokeButton.disabled = true;
 saveJokeButton.addEventListener("click", saveJoke);
 
-async function getJoke(){
-    const jokeData = await fetch('https://icanhazdadjoke.com/', {
+function getJoke() {
+    fetch('https://icanhazdadjoke.com/', {
         headers: {
             'Accept': 'application/json'
         }
-    } );
+    })
+        .then(res => res.json())
+        .then(data => jokeText.innerHTML = data.joke);
     // console.log(jokeData);
-    const jokeObj = await jokeData.json();
+    // const jokeObj = await jokeData.json();
     // console.log(jokeObj.joke);
-    jokeText.innerHTML = jokeObj.joke;
-    document.getElementById("save-joke-button").disabled = false;
-} 
 
-async function saveJoke(){
-    const jokeData = await fetch('https://icanhazdadjoke.com/', {
-        headers: {
-            'Accept': 'application/json'
-        }
-    } );
-    const jokeObj = await jokeData.json();
-    console.log(jokeObj.joke);
-    jokeText.innerHTML = jokeObj.joke;
+    // document.getElementById("save-joke-button").disabled = false;
+}
 
-    // let dadJokeDiv = document.getElementsByClassName('.container p'); 
-    // let dadJokeContainerP = dadJokeDiv.lastElementChild;
-    // // let jokeData = dadJokeContainerP.joke;
-    // console.log(dadJokeContainerP);
+function saveJoke() {
+    let jokeToSave = jokeText.innerHTML;
 
-let reqBody = {
-    jokes: jokeObj,
-};
+    let reqBody = {
+        joke: jokeToSave,
+    };
 
     let reqOptions = {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            Accept: "application/json",
+            "Accept": "application/json",
         },
         body: JSON.stringify(reqBody)
     };
 
-    fetch("http://localhost:3000/awesomeJokes", reqOptions)
+    fetch("http://localhost:3000/jokes", reqOptions)
         .then((resp) => resp.json())
         .then((data) => updateSavedJokesCounter(data.id));
-} 
+}
 
 function updateSavedJokesCounter(id) {
     let jokeDataCountHolder = document.getElementById("interesting-joke-counter");
